@@ -18,3 +18,9 @@ Midterm 1/.vs/Midterm 1/v16/.suo
 *.exe
 *.ilk
 *.log
+*.obj
+*.obj
+*.tlog
+*.tlog
+*.lastbuildstate
+*.obj
