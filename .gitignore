@@ -10,3 +10,11 @@
 *.ipch
 *.ipch
 Midterm 1/.vs/Midterm 1/v16/.suo
+*.opendb
+*.tlog
+*.obj
+*.idb
+*.pdb
+*.exe
+*.ilk
+*.log
