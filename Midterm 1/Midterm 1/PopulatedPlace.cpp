@@ -53,7 +53,7 @@ PopulatedPlace& PopulatedPlace::operator=(const PopulatedPlace& other)
 	return *this;
 }
 
-std::ostream& PopulatedPlace::operator<<(std::ostream& out, const PopulatedPlace& p)
+std::ostream& operator<<(std::ostream& out, const PopulatedPlace& p)
 {
 	return out << p.getName() << " " << p.getPopulation() << std::endl;
 }

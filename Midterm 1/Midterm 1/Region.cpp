@@ -9,6 +9,12 @@ void Region::CopyFrom(const Region& other)
 	}
 }
 
+void Region::Free()
+{
+	delete[] Region;
+	size = 0;
+}
+
 Region::Region()
 {
 }

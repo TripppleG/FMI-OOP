@@ -29,3 +29,6 @@ Midterm 1/.vs
 *.pdb
 Midterm 1/x64
 \Midterm 1\Midterm 1/x64
+*.user
+*.filters
+*.vcxproj

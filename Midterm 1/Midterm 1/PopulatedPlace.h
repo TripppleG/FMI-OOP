@@ -12,7 +12,7 @@ public:
 	PopulatedPlace(const char*, int);
 	PopulatedPlace(const PopulatedPlace&);
 	PopulatedPlace& operator=(const PopulatedPlace&);
-	//std::ostream& operator<<(std::ostream&, const PopulatedPlace&);
+	friend std::ostream& operator<<(std::ostream&, const PopulatedPlace&);
 
 	~PopulatedPlace();
 
