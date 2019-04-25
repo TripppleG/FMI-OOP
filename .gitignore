@@ -9,7 +9,7 @@
 *.ipch
 *.ipch
 *.ipch
-Midterm 1/.vs/Midterm 1/v16/.suo
+Midterm 1/.vs
 *.opendb
 *.tlog
 *.obj
@@ -27,3 +27,5 @@ Midterm 1/.vs/Midterm 1/v16/.suo
 *.exe
 *.exe
 *.pdb
+Midterm 1/x64
+\Midterm 1\Midterm 1/x64
