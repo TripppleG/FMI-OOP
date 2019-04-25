@@ -1,9 +1,35 @@
 #include "PopulatedPlace.h"
 
-PopulatedPlace::PopulatedPlace() 
+bool HasDigits(const char* arr, int len)
 {
-	setName("");
-	setPopulation(0);
+	for (int i = 0; i < len; i++)
+	{
+		if (arr[i] >= '0' && arr[i] <= '9')
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+void PopulatedPlace::Free()
+{
+	delete[] name;
+	population = 0;
+}
+
+void PopulatedPlace::CopyFrom(const PopulatedPlace& other)
+{
+	int len = strlen(other.name);
+	name = new char[len + 1];
+	strcpy_s(name, len + 1, other.name);
+	population = other.population;
+}
+
+PopulatedPlace::PopulatedPlace()
+{
+	name = nullptr;
+	population = 0;
 }
 
 PopulatedPlace::PopulatedPlace(const char* name, int population)
@@ -12,7 +38,7 @@ PopulatedPlace::PopulatedPlace(const char* name, int population)
 	setPopulation(population);
 }
 
-PopulatedPlace::PopulatedPlace(const PopulatedPlace&other)
+PopulatedPlace::PopulatedPlace(const PopulatedPlace& other)
 {
 	CopyFrom(other);
 }
@@ -27,6 +53,11 @@ PopulatedPlace& PopulatedPlace::operator=(const PopulatedPlace& other)
 	return *this;
 }
 
+std::ostream& PopulatedPlace::operator<<(std::ostream& out, const PopulatedPlace& p)
+{
+	return out << p.getName() << " " << p.getPopulation() << std::endl;
+}
+
 PopulatedPlace::~PopulatedPlace()
 {
 	Free();
@@ -35,20 +66,16 @@ PopulatedPlace::~PopulatedPlace()
 void PopulatedPlace::setName(const char* name)
 {
 	int len = strlen(name);
-	for (int i = 0; i < len; i++)
+	if (HasDigits(name, len))
 	{
-		if (name[i] >= '1' && name[i] <= '9')
-		{
-			this->name = new char[1];
-			this->name = '\0';
-			return;
-		}
+		this->name = nullptr;
+		return;
 	}
 	this->name = new char[len + 1];
 	strcpy_s(this->name, len + 1, name);
 }
 
-char* PopulatedPlace::getName() const
+char* PopulatedPlace::getName() const 
 {
 	return name;
 }
@@ -57,13 +84,17 @@ void PopulatedPlace::setPopulation(int population)
 {
 	if (population < 0)
 	{
-		this->populaton = 0;
-		return;
+		population = 0;
 	}
-	this->populaton = population;
+	this->population = population;
 }
 
 int PopulatedPlace::getPopulation() const
 {
-	return populaton;
+	return population;
+}
+
+void PopulatedPlace::printPopulatedPlace() const
+{
+
 }

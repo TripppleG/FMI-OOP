@@ -1,53 +1,39 @@
 #include "Region.h"
 
-Region::Region() {}
-
-Region::Region(int size)
+void Region::CopyFrom(const Region& other)
 {
-	places = new PopulatedPlace[size];
-	for (int i = 0; i < size; i++)
+	int len = sizeof(*places) / sizeof(PopulatedPlace);
+	for (int i = 0; i < len; i++)
 	{
-		setRegion(places[i], size);
+
 	}
 }
 
-Region::Region(const Region& other)
+Region::Region()
 {
-	CopyFrom(other);
 }
 
-Region& Region::operator=(const Region& other)
+Region::Region(const Region&)
 {
-	if (this != &other)
-	{
-		Free();
-		CopyFrom(other);
-	}
-	return *this;
+}
+
+Region& Region::operator=(const Region&)
+{
+	// TODO: insert return statement here
 }
 
 Region::~Region()
 {
-	Free();
 }
 
-void Region::setRegion(PopulatedPlace& place, int size)
+bool Region::addPopulatedPlace(const PopulatedPlace&)
 {
-	for (int i = 0; i < size; i++)
-	{
-		place.setName("Name");
-		place.setPopulation(0);
-	}
+	return false;
 }
 
-bool Region::addPopulatedPlace(const PopulatedPlace& place)
+bool Region::findPopulatedPLace(const PopulatedPlace&)
 {
-	return true;
-}
-
-bool Region::findPopulatedPlace(const PopulatedPlace& place) const
-{
-	return !strcmp(place.getName(), getName()) && place.getPopulation() == getPopulation();
+	return false;
 }
 
 void Region::saveToFile(const char*)

@@ -1,33 +1,17 @@
-#pragma once
-#include"PopulatedPlace.h"
+#include "PopulatedPlace.h"
 
-class Region: public PopulatedPlace
+class Region : public PopulatedPlace
 {
 private:
 	PopulatedPlace* places;
-	void CopyFrom(const Region& other)
-	{
-		int size = sizeof(Region) / sizeof(PopulatedPlace);
-		for (int i = 0; i < size; i++)
-		{
-			PopulatedPlace(other.places[i]);
-		}
-	}
-	void Free()
-	{
-		int size = sizeof(Region) / sizeof(PopulatedPlace);
-		delete[] places;
-	}
-	
+	void CopyFrom(const Region&);
+	void Free();
 public:
 	Region();
-	Region(int);
 	Region(const Region&);
 	Region& operator=(const Region&);
 	~Region();
-
-	void setRegion(PopulatedPlace&, int);
 	bool addPopulatedPlace(const PopulatedPlace&);
-	bool findPopulatedPlace(const PopulatedPlace&) const;
+	bool findPopulatedPLace(const PopulatedPlace&);
 	void saveToFile(const char*);
 };
