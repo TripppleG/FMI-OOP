@@ -70,7 +70,6 @@ bool Region::findPopulatedPLace(const PopulatedPlace& place) const
 
 void Region::saveToFile(const char* filename)
 {
-	Region r(*this);
 	std::ofstream file(filename);
-	file.write((const char*)(r.getName()), sizeof(r.getName()));
+	file.write(getName(), strlen(getName()));
 }

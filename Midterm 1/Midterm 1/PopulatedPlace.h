@@ -6,6 +6,7 @@ class PopulatedPlace
 private:
 	char* name;
 	int population;
+	bool HasDigits() const;
 	void Free();
 	void CopyFrom(const PopulatedPlace&);
 public:
@@ -17,7 +18,7 @@ public:
 	~PopulatedPlace();
 
 	void setName(const char*);
-	char* getName() const;
+	const char* getName() const;
 	void setPopulation(int);
 	int getPopulation() const;
 

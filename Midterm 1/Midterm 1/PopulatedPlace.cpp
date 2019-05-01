@@ -1,10 +1,10 @@
 #include "PopulatedPlace.h"
 
-bool HasDigits(const char* arr, int len)
+bool PopulatedPlace::HasDigits() const
 {
-	for (int i = 0; i < len; i++)
+	for (int i = 0; name[i] != '\0'; i++)
 	{
-		if (arr[i] >= '0' && arr[i] <= '9')
+		if (name[i] >= '0' && name[i] <= '9')
 		{
 			return true;
 		}
@@ -88,7 +88,7 @@ void PopulatedPlace::setName(const char* name)
 	strcpy_s(this->name, len + 1, name);
 }
 
-char* PopulatedPlace::getName() const 
+const char* PopulatedPlace::getName() const 
 {
 	return name;
 }
