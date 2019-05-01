@@ -53,9 +53,22 @@ PopulatedPlace& PopulatedPlace::operator=(const PopulatedPlace& other)
 	return *this;
 }
 
+bool PopulatedPlace::operator==(const PopulatedPlace& other) const
+{
+	if (!strcmp(name, other.name))
+	{
+		if (population == other.population)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 std::ostream& operator<<(std::ostream& out, const PopulatedPlace& p)
 {
-	return out << p.getName() << " " << p.getPopulation() << std::endl;
+	out << "Name: " << p.getName() << "\nPopulation: " << p.getPopulation() << std::endl;
+	return out;
 }
 
 PopulatedPlace::~PopulatedPlace()
@@ -94,7 +107,12 @@ int PopulatedPlace::getPopulation() const
 	return population;
 }
 
+bool PopulatedPlace::areTheSame(const PopulatedPlace& other) const
+{
+	return *this == other;
+}
+
 void PopulatedPlace::printPopulatedPlace() const
 {
-
+	std::cout << *this;
 }
