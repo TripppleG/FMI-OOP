@@ -20,15 +20,17 @@ Region::Region()
 {
 	places = nullptr;
 	size = 0;
+	elementsCount = 0;
 }
 
-Region::Region(int size)
+Region::Region(const char* name, const int population, const int size) : PopulatedPlace(name, population)
 {
 	places = new PopulatedPlace[size];
 	this->size = size;
+	elementsCount = 0;
 }
 
-Region::Region(const Region& other)
+Region::Region(const Region& other) : PopulatedPlace(other)
 {
 	CopyFrom(other);
 }
@@ -37,23 +39,27 @@ Region& Region::operator=(const Region& other)
 {
 	if (this != &other)
 	{
+		PopulatedPlace::operator=(other);
 		Free();
 		CopyFrom(other);
 	}
 	return *this;
 }
 
-Region::~Region() {}
-
-int Region::getSize() const
+Region::~Region()
 {
-	return size;
+	Free();
 }
 
 bool Region::addPopulatedPlace(const PopulatedPlace& other)
 {
-	places[0] = other;
-	return false;
+	if (elementsCount >= size)
+	{
+		return false;
+	}
+	places[elementsCount] = other;
+	elementsCount++;
+	return true;
 }
 
 bool Region::findPopulatedPLace(const PopulatedPlace& place) const
@@ -70,6 +76,9 @@ bool Region::findPopulatedPLace(const PopulatedPlace& place) const
 
 void Region::saveToFile(const char* filename)
 {
+	const char* newName = getName();
 	std::ofstream file(filename);
-	file.write(getName(), strlen(getName()));
+
+	file << newName;
+	file.close();
 }

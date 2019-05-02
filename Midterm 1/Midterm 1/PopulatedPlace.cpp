@@ -1,6 +1,6 @@
 #include "PopulatedPlace.h"
 
-bool PopulatedPlace::HasDigits() const
+bool PopulatedPlace::HasDigits(const char* name) const
 {
 	for (int i = 0; name[i] != '\0'; i++)
 	{
@@ -12,12 +12,6 @@ bool PopulatedPlace::HasDigits() const
 	return false;
 }
 
-void PopulatedPlace::Free()
-{
-	delete[] name;
-	population = 0;
-}
-
 void PopulatedPlace::CopyFrom(const PopulatedPlace& other)
 {
 	int len = strlen(other.name);
@@ -26,13 +20,19 @@ void PopulatedPlace::CopyFrom(const PopulatedPlace& other)
 	population = other.population;
 }
 
+void PopulatedPlace::Free()
+{
+	delete[] name;
+	population = 0;
+}
+
 PopulatedPlace::PopulatedPlace()
 {
 	name = nullptr;
 	population = 0;
 }
 
-PopulatedPlace::PopulatedPlace(const char* name, int population)
+PopulatedPlace::PopulatedPlace(const char* name, const int population)
 {
 	setName(name);
 	setPopulation(population);
@@ -79,7 +79,7 @@ PopulatedPlace::~PopulatedPlace()
 void PopulatedPlace::setName(const char* name)
 {
 	int len = strlen(name);
-	if (HasDigits(name, len))
+	if (HasDigits(name))
 	{
 		this->name = nullptr;
 		return;

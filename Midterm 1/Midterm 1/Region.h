@@ -5,15 +5,15 @@ class Region : public PopulatedPlace
 private:
 	PopulatedPlace* places;
 	int size;
+	int elementsCount;
 	void CopyFrom(const Region&);
 	void Free();
 public:
 	Region();
-	Region(int);
+	Region(const char*, const int, const int);
 	Region(const Region&);
 	Region& operator=(const Region&);
 	~Region();
-	int getSize() const;
 	bool addPopulatedPlace(const PopulatedPlace&);
 	bool findPopulatedPLace(const PopulatedPlace&) const;
 	void saveToFile(const char*);
