@@ -1,0 +1,15 @@
+Name: Vidin
+Population: 200
+
+Name: Varna
+Population: 432
+
+Name: Burgas
+Population: 1660
+
+Name: Plovdiv
+Population: 1996
+
+Name: Sofia
+Population: 20000
+

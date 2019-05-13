@@ -67,7 +67,7 @@ bool PopulatedPlace::operator==(const PopulatedPlace& other) const
 
 std::ostream& operator<<(std::ostream& out, const PopulatedPlace& p)
 {
-	out << "Name: " << p.getName() << "\nPopulation: " << p.getPopulation() << std::endl;
+	out << "Name: " << p.getName() << "\nPopulation: " << p.getPopulation() << std::endl << std::endl;
 	return out;
 }
 
@@ -81,7 +81,7 @@ void PopulatedPlace::setName(const char* name)
 	int len = strlen(name);
 	if (HasDigits(name))
 	{
-		this->name = nullptr;
+		this->name = new char[1];
 		return;
 	}
 	this->name = new char[len + 1];

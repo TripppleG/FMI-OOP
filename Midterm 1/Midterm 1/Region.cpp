@@ -39,8 +39,8 @@ Region& Region::operator=(const Region& other)
 {
 	if (this != &other)
 	{
-		PopulatedPlace::operator=(other);
 		Free();
+		PopulatedPlace::operator=(other);
 		CopyFrom(other);
 	}
 	return *this;
@@ -76,9 +76,29 @@ bool Region::findPopulatedPLace(const PopulatedPlace& place) const
 
 void Region::saveToFile(const char* filename)
 {
-	const char* newName = getName();
-	std::ofstream file(filename);
 
-	file << newName;
+	std::ofstream file(filename);
+	if (!file)
+	{
+		std::cout << "Error opening the file!" << std::endl;
+		return;
+	}
+	int min = 0;
+	for (int i = 0; i < size - 1; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (places[i].getPopulation() > places[j].getPopulation())
+			{
+				PopulatedPlace temp(places[i]);
+				places[i] = places[j];
+				places[j] = temp;
+			}
+		}
+	}
+	for (int i = 0; i < size; i++)
+	{
+		file << places[i];
+	}
 	file.close();
 }
