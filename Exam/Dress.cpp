@@ -23,3 +23,9 @@ const char* Dress::GetType() const
 {
 	return "Dress";
 }
+
+Clothe* Dress::Clone()
+{
+	Clothe* copy = new Dress(*this);
+	return copy;
+}

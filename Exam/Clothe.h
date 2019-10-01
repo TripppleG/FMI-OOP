@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 
 inline bool HasANumber(const char* arr)
 {
@@ -28,7 +29,6 @@ private:
 	void CopyFrom(const Clothe&);
 	void Free();
 public:
-	Clothe();
 	Clothe(const char*, const char*, double);
 	Clothe(const Clothe&);
 	Clothe& operator=(const Clothe&);
@@ -38,4 +38,5 @@ public:
 	const char* GetSize() const;
 	double GetPrice() const;
 	virtual const char* GetType() const = 0;
+	virtual Clothe* Clone() = 0;
 };

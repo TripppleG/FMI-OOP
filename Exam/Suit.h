@@ -9,4 +9,5 @@ public:
 	{
 		return "Suit";
 	}
+	Clothe* Clone();
 };

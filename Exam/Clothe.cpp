@@ -44,14 +44,6 @@ void Clothe::Free()
 	delete[]size;
 }
 
-Clothe::Clothe()
-{
-	SetColour(".");
-	SetSize(".");
-	SetPrice(0);
-
-}
-
 Clothe::Clothe(const char* colour, const char* size, double price)
 {
 	SetColour(colour);

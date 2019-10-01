@@ -10,4 +10,5 @@ public:
 	Dress(const char*, const char*, double, int);
 	int GetLength() const;
 	const char* GetType() const;
+	Clothe* Clone();
 };

@@ -64,7 +64,7 @@ void SuitCase::CopyFrom(const SuitCase& other)
 	SetPhoneNumber(other.phoneNumber);
 	SetSize(other.size);
 
-	clothes = new Clothe[size];
+	clothes = new Clothe*[size];
 	for (int i = 0; i < size; i++)
 	{
 		clothes[i] = other.clothes[i];
@@ -86,6 +86,7 @@ SuitCase::SuitCase(const char* colour, const char* name, const char* address, co
 	SetAdress(address);
 	SetPhoneNumber(phoneNumber);
 	SetSize(size);
+
 	count = 0;
 }
 
@@ -184,7 +185,8 @@ void SuitCase::FindClothe(const char* colour, const char* type) const
 
 void SuitCase::SaveToFile()
 {
-
+	std::ofstream myFile("SuitCase.txt");
+	myFile << *this;
 }
 
 const char* SuitCase::GetColour() const

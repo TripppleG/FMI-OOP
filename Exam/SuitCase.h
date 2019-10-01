@@ -5,7 +5,7 @@ class SuitCase
 {
 private:
 	
-	Clothe* clothes;
+	Clothe** clothes;
 	char* colour;
 	char* name;
 	char* phoneNumber;
@@ -35,7 +35,6 @@ public:
 	void RemoveClotheOfType(const char*);
 	void FindClothe(const char*, const char*) const;
 	void SaveToFile();
-
 
 	const char* GetColour() const;
 	const char* GetName() const;
